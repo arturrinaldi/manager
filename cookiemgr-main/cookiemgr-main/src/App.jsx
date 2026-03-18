@@ -5,10 +5,9 @@ import { formatCurrency, formatDate, formatTime, getLast6Months, getMonthKey, cu
 import { addToast } from './utils/toast';
 import ToastContainer from './components/ToastContainer';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell, PieChart, Pie, ReferenceLine } from 'recharts';
-import { useRef } from 'react';
 
 // --- Dashboard View ---
-const Dashboard = ({ products, sales, expenses, exportData, importData }) => {
+const Dashboard = ({ sales, expenses }) => {
   const currentMonth = currentMonthKey();
   
   const stats = useMemo(() => {
