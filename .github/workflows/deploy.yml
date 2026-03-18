@@ -21,6 +21,9 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: cookiemgr-main/cookiemgr-main
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -29,6 +32,7 @@ jobs:
         with:
           node-version: 22 # Use a stable and current LTS
           cache: 'npm'
+          cache-dependency-path: cookiemgr-main/cookiemgr-main/package-lock.json
       - name: Install dependencies
         run: npm install
       - name: Build
@@ -41,7 +45,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist'
+          path: './cookiemgr-main/cookiemgr-main/dist'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
